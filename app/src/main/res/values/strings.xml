@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Clothing Suggestor</string>
+    <string name="plus">+</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="save">Save</string>
+    <string name="cloud_cover">Cloud Cover</string>
+    <string name="cairo">Cairo</string>
+    <string name="clear_sky">Clear Sky</string>
+    <string name="_16">16 °</string>
+    <string name="_12">12 %</string>
+    <string name="_22_m_s">22 M/S</string>
+    <string name="suggested_outfit">Suggested Outfit</string>
+    <string name="no_internet">No Internet</string>
+</resources>
