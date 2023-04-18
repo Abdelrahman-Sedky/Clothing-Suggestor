@@ -1,7 +1,7 @@
-package com.example.clothingsuggestor.data
+package com.example.clothingsuggestor.data.local
 
 import com.example.clothingsuggestor.R
-import com.example.clothingsuggestor.data.domain.Cloth
+import com.example.clothingsuggestor.domain.entities.Cloth
 
 class DataSource {
 

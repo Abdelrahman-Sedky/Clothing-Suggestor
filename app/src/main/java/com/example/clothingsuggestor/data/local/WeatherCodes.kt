@@ -1,4 +1,4 @@
-package com.example.clothingsuggestor.data
+package com.example.clothingsuggestor.data.local
 
 object WeatherCodes {
 	val weatherCode = mapOf(

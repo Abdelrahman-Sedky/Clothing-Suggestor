@@ -1,4 +1,4 @@
-package com.example.clothingsuggestor.data.domain
+package com.example.clothingsuggestor.domain.entities
 
 data class WeatherValues(
 	val temperature: Double,

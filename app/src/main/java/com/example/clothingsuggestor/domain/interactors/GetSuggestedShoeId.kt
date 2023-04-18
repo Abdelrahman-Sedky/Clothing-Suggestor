@@ -1,7 +1,7 @@
-package com.example.clothingsuggestor.data.interactors
+package com.example.clothingsuggestor.domain.interactors
 
-import com.example.clothingsuggestor.data.DataSource
-import com.example.clothingsuggestor.data.domain.Cloth
+import com.example.clothingsuggestor.data.local.DataSource
+import com.example.clothingsuggestor.domain.entities.Cloth
 
 class GetSuggestedShoeId(private val dataSource: DataSource) {
 

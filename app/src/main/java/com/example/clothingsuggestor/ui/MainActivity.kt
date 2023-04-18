@@ -8,17 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.example.clothingsuggestor.data.DataSource
-import com.example.clothingsuggestor.data.WeatherCodes
-import com.example.clothingsuggestor.data.interactors.GetSuggestedShoeId
-import com.example.clothingsuggestor.data.interactors.GetSuggestedToppingId
-import com.example.clothingsuggestor.data.interactors.GetSuggestedTrouserId
+import com.example.clothingsuggestor.data.local.DataSource
+import com.example.clothingsuggestor.data.local.WeatherCodes
+import com.example.clothingsuggestor.domain.interactors.GetSuggestedShoeId
+import com.example.clothingsuggestor.domain.interactors.GetSuggestedToppingId
+import com.example.clothingsuggestor.domain.interactors.GetSuggestedTrouserId
 import com.example.clothingsuggestor.databinding.ActivityMainBinding
 import com.example.clothingsuggestor.ui.adapters.ClothAdapter
-import com.example.clothingsuggestor.util.APIRequest
-import com.example.clothingsuggestor.util.SharedPref
-import com.example.clothingsuggestor.util.dateOnly
-import com.example.clothingsuggestor.util.toWeatherData
+import com.example.clothingsuggestor.data.remote.APIRequest
+import com.example.clothingsuggestor.data.local.SharedPref
+import com.example.clothingsuggestor.data.remote.Mapper
 import okhttp3.Response
 import org.json.JSONObject
 import kotlin.math.roundToInt
@@ -70,9 +69,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 	private fun onResponse(response: Response) {
 		response.body?.string()?.let { jsonString ->
-			val result = JSONObject(jsonString).toWeatherData()
+			val jsonObject = JSONObject(jsonString)
+			val result = Mapper.convertToWeatherData(jsonObject)
 
-			val currentDate = result.getStartTime().dateOnly()
+			val currentDate = result.getStartTime().substring(0, 10).trim()
 			val temperature = result.getTemperature()
 			val humidity = result.getHumidity()
 			val windSpeed = result.getWindSpeed()
@@ -88,7 +88,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun onFailure() {
-		if(!isNetworkAvailable()){
+		if (!isNetworkAvailable()) {
 			binding.noInternet.visibility = View.VISIBLE
 		}
 	}

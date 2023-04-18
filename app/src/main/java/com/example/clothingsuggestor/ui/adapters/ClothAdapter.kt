@@ -3,7 +3,7 @@ package com.example.clothingsuggestor.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clothingsuggestor.data.domain.Cloth
+import com.example.clothingsuggestor.domain.entities.Cloth
 import com.example.clothingsuggestor.databinding.ItemImageBinding
 
 class ClothAdapter(private val clothList: List<Cloth>) :

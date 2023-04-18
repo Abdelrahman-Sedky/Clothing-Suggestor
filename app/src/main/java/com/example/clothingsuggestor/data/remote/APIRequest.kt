@@ -1,9 +1,10 @@
-package com.example.clothingsuggestor.util
+package com.example.clothingsuggestor.data.remote
 
 import okhttp3.*
 import java.io.IOException
 
 object APIRequest {
+	private const val API_KEY = "Wk299fLoNufHCZG1reJeBSmaG29zdGEJ"
 
 	fun currentWeatherStateRequest(
 		onResponse: (response: Response) -> Unit,
@@ -19,7 +20,7 @@ object APIRequest {
 			.addQueryParameter("fields", "temperature,humidity,windSpeed,cloudCover,weatherCode")
 			.addQueryParameter("timesteps", "current")
 			.addQueryParameter("units", "metric")
-			.addQueryParameter("apikey", Constants.API_KEY)
+			.addQueryParameter("apikey", API_KEY)
 			.build()
 
 		val request = Request.Builder().url(url).build()
@@ -29,5 +30,4 @@ object APIRequest {
 			override fun onResponse(call: Call, response: Response) = onResponse(response)
 		})
 	}
-
 }
