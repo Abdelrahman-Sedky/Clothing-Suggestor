@@ -2,7 +2,6 @@ package com.example.clothingsuggestor.ui
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -23,16 +22,12 @@ import org.json.JSONObject
 import kotlin.math.roundToInt
 
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
 	private val dataSource by lazy { DataSource() }
 	private val getSuggestedToppingId by lazy { GetSuggestedToppingId(dataSource) }
 	private val getSuggestedTrouserId by lazy { GetSuggestedTrouserId(dataSource) }
 	private val getSuggestedShoeId by lazy { GetSuggestedShoeId(dataSource) }
-
-
-	override val bindingInflater: (LayoutInflater) -> ActivityMainBinding =
-		ActivityMainBinding::inflate
 
 	override fun setup() {
 		APIRequest.currentWeatherStateRequest(::onResponse, ::onFailure)
